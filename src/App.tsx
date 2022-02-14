@@ -1,6 +1,6 @@
 import React from "react";
 import "./App.css";
-import InputField from "./components/InputField";
+import AddPersonForm from "./components/AddPersonForm";
 
 interface Person {
   firstName: string;
@@ -13,7 +13,7 @@ const App: React.FC = () => {
   return (
     <div className="App">
       <h1 className="header">Names</h1>
-      <InputField></InputField>
+      <AddPersonForm />
     </div>
   );
 };
