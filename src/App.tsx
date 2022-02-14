@@ -1,19 +1,32 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./App.css";
 import AddPersonForm from "./components/AddPersonForm";
-
-interface Person {
-  firstName: string;
-  lastName: string;
-  age: number;
-}
+import Person from "./components/Person";
+import TableComponent from "./components/TableComponent";
 
 const App: React.FC = () => {
-  // const example: Person = { firstName: "Jukka", lastName: "Virtanen", age: 30 };
+  const data: Person[] = [
+    { id: 1, firstName: "Jukka", lastName: "Virtanen", age: 30 },
+    { id: 2, firstName: "Minna", lastName: "Kuula", age: 22 },
+    { id: 3, firstName: "Neea", lastName: "Lattu", age: 27 },
+  ];
+
+  const handleAdd = (e: React.FormEvent, person: Person) => {
+    e.preventDefault();
+    console.log("Handling add new person in App component");
+    console.log(`${person.firstName} ${person.lastName} ${person.age}`);
+    data.push(person);
+  };
+
+  useEffect(() => {
+    console.log("data changed.", data.length);
+  }, [data.length]);
+
   return (
     <div className="App">
       <h1 className="header">Names</h1>
-      <AddPersonForm />
+      <AddPersonForm handleAdd={handleAdd} />
+      <TableComponent data={data} />
     </div>
   );
 };
