@@ -10,22 +10,22 @@ const App: React.FC = () => {
     { id: 2, firstName: "Minna", lastName: "Kuula", age: 22 },
     { id: 3, firstName: "Neea", lastName: "Lattu", age: 27 },
   ]);
+  const [nextId, setNextId] = useState<number>(data.length + 1);
 
   const handleAdd = (e: React.FormEvent, person: Person) => {
     e.preventDefault();
-    console.log("Handling add new person in App component");
-    console.log(`${person.firstName} ${person.lastName} ${person.age}`);
     setData([...data, person]);
+    setNextId(nextId + 1);
   };
 
   useEffect(() => {
-    console.log("data changed.", data.length);
+    console.log(data);
   }, [data]);
 
   return (
     <div className="App">
       <h1 className="header">Names</h1>
-      <AddPersonForm handleAdd={handleAdd} />
+      <AddPersonForm nextId={nextId} handleAdd={handleAdd} />
       <TableComponent data={data} />
     </div>
   );
