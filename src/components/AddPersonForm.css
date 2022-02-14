@@ -1,0 +1,61 @@
+.inputs {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-content: center;
+  margin: 5px 10px;
+}
+
+.inputs > * {
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 2px 4px 5px 2px rgb(141, 141, 141);
+  margin-bottom: 5px;
+}
+
+.firstname {
+  width: 100%;
+}
+
+.lastname {
+  width: 100%;
+}
+
+.age {
+  width: 50%;
+}
+
+.submit_new {
+  color: antiquewhite;
+  background-color: rgb(255, 80, 10);
+  padding: 2px 15px;
+  border-radius: 5px;
+  box-shadow: 2px 4px 5px 2px rgb(141, 141, 141);
+}
+
+.submit_new:hover {
+  background-color: rgb(255, 118, 27);
+}
+
+.submit_new:active {
+  transform: scale(0.9);
+}
+
+@media only screen and (min-width: 768px) {
+  .inputs {
+    margin: 0px 0px;
+  }
+
+  .firstname {
+    width: 30%;
+  }
+
+  .lastname {
+    width: 30%;
+  }
+
+  .age {
+    width: 10%;
+  }
+}
