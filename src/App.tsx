@@ -18,6 +18,11 @@ const App: React.FC = () => {
     setNextId(nextId + 1);
   };
 
+  const handleDelete = (person: Person) => {
+    const updatedData = data.filter((obj) => obj !== person);
+    setData(updatedData);
+  };
+
   useEffect(() => {
     console.log(data);
   }, [data]);
@@ -26,7 +31,7 @@ const App: React.FC = () => {
     <div className="App">
       <h1 className="header">Names</h1>
       <AddPersonForm nextId={nextId} handleAdd={handleAdd} />
-      <TableComponent data={data} />
+      <TableComponent data={data} handleDelete={handleDelete} />
     </div>
   );
 };
