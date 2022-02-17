@@ -6,11 +6,11 @@ import TableComponent from "./components/TableComponent";
 import database from "./DBConnection";
 
 const App: React.FC = () => {
-  /*const [data, setData] = useState<Person[]>([
+  /*const example:Person[] = [
     { id: 1, firstName: "Jukka", lastName: "Virtanen", age: 30 },
     { id: 2, firstName: "Minna", lastName: "Kuula", age: 22 },
     { id: 3, firstName: "Neea", lastName: "Lattu", age: 27 },
-  ]);*/
+  ];*/
   const [data, setData] = useState<Person[]>([]);
 
   const handleAdd = async (e: React.FormEvent, person: Person) => {
@@ -20,7 +20,6 @@ const App: React.FC = () => {
       lastName: person.lastName,
       age: person.age,
     });
-    //setData([...data, person]);
     await getData();
   };
 
@@ -28,8 +27,6 @@ const App: React.FC = () => {
     if (person.id) {
       await database.deletePerson(person.id);
       await getData();
-      //const updatedData = data.filter((obj) => obj !== person);
-      //setData(updatedData);
     }
   };
 
@@ -42,11 +39,7 @@ const App: React.FC = () => {
   useEffect(() => {
     getData();
   }, []);
-  /*
-  useEffect(() => {
-    console.log(data);
-  }, [data]);
-*/
+
   return (
     <div className="App">
       <h1 className="header">Names</h1>
