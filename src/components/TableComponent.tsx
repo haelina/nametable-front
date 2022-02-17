@@ -3,6 +3,7 @@ import Person from "./Person";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import EditIcon from "@mui/icons-material/Edit";
 import SaveIcon from "@mui/icons-material/Save";
+import "./TableComponent.css";
 
 interface TableProps {
   data: Person[];
@@ -14,11 +15,15 @@ const TableComponent: React.FC<TableProps> = ({ data, handleDelete }) => {
   const [editingPerson, setEditingPerson] = useState<Person | null>(null);
 
   return (
-    <table>
+    <table className="nametable">
       <thead>
         <tr>
           {columnNames.map((col) => {
-            return <th key={col}>{col}</th>;
+            return (
+              <th className="tableheader" key={col}>
+                {col}
+              </th>
+            );
           })}
         </tr>
       </thead>
@@ -27,15 +32,15 @@ const TableComponent: React.FC<TableProps> = ({ data, handleDelete }) => {
           if (editingPerson !== person) {
             return (
               <tr key={person.id}>
-                <td>{person.firstName}</td>
-                <td>{person.lastName}</td>
-                <td>{person.age}</td>
-                <td>
+                <td className="firstcolumn">{person.firstName}</td>
+                <td className="lastcolumn">{person.lastName}</td>
+                <td className="agecolumn">{person.age}</td>
+                <td className="modifycolumn">
                   <button onClick={() => setEditingPerson(person)}>
                     <EditIcon />
                   </button>
                 </td>
-                <td>
+                <td className="deletecolumn">
                   <button onClick={() => handleDelete(person)}>
                     <DeleteForeverIcon />
                   </button>
@@ -45,21 +50,21 @@ const TableComponent: React.FC<TableProps> = ({ data, handleDelete }) => {
           } else {
             return (
               <tr key={person.id}>
-                <td>
-                  <input type="input" value={person.firstName}></input>
+                <td className="firstcolumn_mod">
+                  <input type="input" defaultValue={person.firstName}></input>
                 </td>
-                <td>
-                  <input value={person.lastName}></input>
+                <td className="lastcolumn_mod">
+                  <input defaultValue={person.lastName}></input>
                 </td>
-                <td>
-                  <input value={person.age}></input>
+                <td className="agecolumn_mod">
+                  <input defaultValue={person.age}></input>
                 </td>
-                <td>
+                <td className="modifycolumn">
                   <button onClick={() => setEditingPerson(null)}>
                     <SaveIcon />
                   </button>
                 </td>
-                <td>
+                <td className="deletecolumn">
                   <button onClick={() => handleDelete(person)}>
                     <DeleteForeverIcon />
                   </button>

@@ -1,0 +1,55 @@
+.nametable {
+  background-color: rgb(243, 239, 252);
+  width: 100vw;
+  margin: 10px;
+  padding: 15px;
+  border: 2px solid gray;
+}
+
+.tableheader {
+  text-align: left;
+  padding: 10px;
+  color: white;
+  background-color: rgb(51, 51, 51);
+  border-radius: 10px 10px 0px 0px;
+}
+
+tbody td {
+  background-color: white;
+  padding-left: 10px;
+}
+
+.firstcolumn,
+.lastcolumn,
+.firstcolumn_mod,
+.lastcolumn_mod {
+  width: 30vw;
+}
+
+.firstcolumn_mod,
+.lastcolumn_mod,
+.agecolumn_mod {
+  padding-left: 2px;
+}
+
+.agecolumn,
+.agecolumn_mod {
+  width: 15vw;
+}
+
+tbody input {
+  width: 90%;
+  padding: 7px 2px;
+}
+
+.deletecolumn,
+.modifycolumn {
+  padding: 5px;
+  text-align: center;
+}
+
+@media only screen and (min-width: 768px) {
+  .nametable {
+    width: 50vw;
+  }
+}
