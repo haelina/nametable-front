@@ -1,8 +1,8 @@
 .nametable {
   background-color: rgb(243, 239, 252);
-  width: 100vw;
-  margin: 10px;
-  padding: 15px;
+  max-width: 99vw;
+  margin-top: 10px;
+  padding: 10px;
   border: 2px solid gray;
 }
 
@@ -51,5 +51,6 @@ tbody input {
 @media only screen and (min-width: 768px) {
   .nametable {
     width: 50vw;
+    margin: 10px;
   }
 }
