@@ -23,6 +23,11 @@ const App: React.FC = () => {
     await getData();
   };
 
+  const handleEdit = async (person: Person) => {
+    await database.modifyPerson(person);
+    await getData();
+  };
+
   const handleDelete = async (person: Person) => {
     if (person.id) {
       await database.deletePerson(person.id);
@@ -44,7 +49,11 @@ const App: React.FC = () => {
     <div className="App">
       <h1 className="header">Names</h1>
       <AddPersonForm handleAdd={handleAdd} />
-      <TableComponent data={data} handleDelete={handleDelete} />
+      <TableComponent
+        data={data}
+        handleEdit={handleEdit}
+        handleDelete={handleDelete}
+      />
     </div>
   );
 };
