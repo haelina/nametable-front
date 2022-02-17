@@ -8,28 +8,29 @@ interface NewPersonProps {
 
 const AddPersonForm: React.FC<NewPersonProps> = ({ handleAdd }) => {
   const [person, setPerson] = useState<Person>({
-    //id: nextId,
     firstName: "",
     lastName: "",
     age: -1,
   });
 
   const handleChange = (e: React.FormEvent<HTMLInputElement>) => {
-    setPerson({ ...person, [e.currentTarget.name]: e.currentTarget.value });
-    console.log(
+    if (e.currentTarget.name === "age" && e.currentTarget.value === "") {
+      setPerson({ ...person, [e.currentTarget.name]: -1 });
+    } else {
+      setPerson({ ...person, [e.currentTarget.name]: e.currentTarget.value });
+    }
+    /*console.log(
       `first:${person.firstName} last:${person.lastName} age:${person.age}`
-    );
+    );*/
   };
 
   const onSubmit = (e: React.FormEvent) => {
-    //e.preventDefault();
     handleAdd(e, person);
     resetFields();
   };
 
   const resetFields = () => {
     setPerson({
-      //id: nextId,
       firstName: "",
       lastName: "",
       age: -1,
@@ -38,8 +39,8 @@ const AddPersonForm: React.FC<NewPersonProps> = ({ handleAdd }) => {
 
   const validPerson = (): boolean => {
     if (
-      person.firstName.length > 2 &&
-      person.lastName.length > 2 &&
+      person.firstName.length >= 2 &&
+      person.lastName.length >= 2 &&
       person.age >= 0 &&
       person.age < 115
     ) {
@@ -74,7 +75,11 @@ const AddPersonForm: React.FC<NewPersonProps> = ({ handleAdd }) => {
         value={person.age > -1 ? person.age : ""}
         onChange={handleChange}
       />
-      <button disabled={!validPerson()} className="submit_new" type="submit">
+      <button
+        disabled={!validPerson()}
+        className={`${validPerson() ? "submit_new" : "submit_disabled"}`}
+        type="submit"
+      >
         Add person
       </button>
     </form>
