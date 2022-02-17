@@ -3,13 +3,12 @@ import "./AddPersonForm.css";
 import Person from "./Person";
 
 interface NewPersonProps {
-  nextId: number;
   handleAdd: (e: React.FormEvent, p: Person) => void;
 }
 
-const AddPersonForm: React.FC<NewPersonProps> = ({ nextId, handleAdd }) => {
+const AddPersonForm: React.FC<NewPersonProps> = ({ handleAdd }) => {
   const [person, setPerson] = useState<Person>({
-    id: nextId,
+    //id: nextId,
     firstName: "",
     lastName: "",
     age: -1,
@@ -30,7 +29,7 @@ const AddPersonForm: React.FC<NewPersonProps> = ({ nextId, handleAdd }) => {
 
   const resetFields = () => {
     setPerson({
-      id: nextId,
+      //id: nextId,
       firstName: "",
       lastName: "",
       age: -1,
