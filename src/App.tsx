@@ -12,17 +12,25 @@ const App: React.FC = () => {
     { id: 3, firstName: "Neea", lastName: "Lattu", age: 27 },
   ]);*/
   const [data, setData] = useState<Person[]>([]);
-  const [nextId, setNextId] = useState<number>(data.length + 1);
 
-  const handleAdd = (e: React.FormEvent, person: Person) => {
+  const handleAdd = async (e: React.FormEvent, person: Person) => {
     e.preventDefault();
-    setData([...data, person]);
-    setNextId(nextId + 1);
+    await database.addPerson({
+      firstName: person.firstName,
+      lastName: person.lastName,
+      age: person.age,
+    });
+    //setData([...data, person]);
+    await getData();
   };
 
-  const handleDelete = (person: Person) => {
-    const updatedData = data.filter((obj) => obj !== person);
-    setData(updatedData);
+  const handleDelete = async (person: Person) => {
+    if (person.id) {
+      await database.deletePerson(person.id);
+      await getData();
+      //const updatedData = data.filter((obj) => obj !== person);
+      //setData(updatedData);
+    }
   };
 
   const getData = async () => {
@@ -34,15 +42,15 @@ const App: React.FC = () => {
   useEffect(() => {
     getData();
   }, []);
-
+  /*
   useEffect(() => {
     console.log(data);
   }, [data]);
-
+*/
   return (
     <div className="App">
       <h1 className="header">Names</h1>
-      <AddPersonForm nextId={nextId} handleAdd={handleAdd} />
+      <AddPersonForm handleAdd={handleAdd} />
       <TableComponent data={data} handleDelete={handleDelete} />
     </div>
   );
