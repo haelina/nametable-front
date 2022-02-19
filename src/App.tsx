@@ -7,11 +7,6 @@ import TableComponent from "./components/TableComponent";
 import database from "./DBConnection";
 
 const App: React.FC = () => {
-  /*const example:Person[] = [
-    { id: 1, firstName: "Jukka", lastName: "Virtanen", age: 30 },
-    { id: 2, firstName: "Minna", lastName: "Kuula", age: 22 },
-    { id: 3, firstName: "Neea", lastName: "Lattu", age: 27 },
-  ];*/
   const [data, setData] = useState<Person[]>([]);
   const [sortBy, setSortBy] = useState<string>("firstName");
   const [sortOrder, setSortOrder] = useState<string>("asc");

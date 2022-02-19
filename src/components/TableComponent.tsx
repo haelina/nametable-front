@@ -37,7 +37,7 @@ const TableComponent: React.FC<TableProps> = ({
         editingPerson.lastName === lastName &&
         editingPerson.age === age
       ) {
-        console.log("Nothing to edit");
+        //console.log("Nothing to edit");
       } else {
         handleEdit({ id: editingPerson.id, firstName, lastName, age });
       }
