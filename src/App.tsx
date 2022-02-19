@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./App.css";
 import AddPersonForm from "./components/AddPersonForm";
 import Person from "./components/Person";
+import sortArray from "./components/Sorter";
 import TableComponent from "./components/TableComponent";
 import database from "./DBConnection";
 
@@ -37,6 +38,7 @@ const App: React.FC = () => {
 
   const getData = async () => {
     const d = await database.getAll();
+    sortArray(d, "age", "desc");
     console.log(d);
     setData(d);
   };
