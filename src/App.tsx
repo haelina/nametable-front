@@ -58,7 +58,10 @@ const App: React.FC = () => {
 
   return (
     <div className="App">
-      <h1 className="header">Names</h1>
+      <div className="header">
+        <h1>Names</h1>
+      </div>
+
       <AddPersonForm handleAdd={handleAdd} />
       <TableComponent
         data={data}

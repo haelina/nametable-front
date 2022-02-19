@@ -1,13 +1,30 @@
+* {
+  box-sizing: border-box;
+}
 .App {
-  width: 100vw;
+  max-width: 100%;
   height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: rgb(252, 240, 218);
+  background-color: #d1dcde;
+
+  border-left: 1px solid #04323a;
+}
+.header {
+  width: 100%;
+  text-align: center;
+  background-color: #573625;
 }
 
-.header {
+.header h1 {
   font-size: 30px;
-  color: rgb(160, 88, 20);
+  color: #f7e8e3;
+}
+
+@media only screen and (min-width: 768px) {
+  .header {
+    width: 50%;
+    padding: 10px;
+  }
 }
