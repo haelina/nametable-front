@@ -4,6 +4,8 @@ import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import EditIcon from "@mui/icons-material/Edit";
 import SaveIcon from "@mui/icons-material/Save";
 import "./TableComponent.css";
+import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
+import ArrowUpwardIcon from "@mui/icons-material/ArrowUpward";
 
 interface TableProps {
   data: Person[];
@@ -88,6 +90,32 @@ const TableComponent: React.FC<TableProps> = ({
       }
     }
   };
+  const showArrow = (col: string) => {
+    if (col.toLowerCase().substring(0, 2) === sortBy.substring(0, 2)) {
+      if (sortOrder === "asc") {
+        return (
+          <ArrowDownwardIcon
+            style={{
+              color: "white",
+              height: "15px",
+              width: "auto",
+              paddingLeft: "5px",
+            }}
+          />
+        );
+      }
+      return (
+        <ArrowUpwardIcon
+          style={{
+            color: "white",
+            height: "15px",
+            width: "auto",
+            paddingLeft: "5px",
+          }}
+        />
+      );
+    }
+  };
 
   return (
     <table className="nametable">
@@ -100,7 +128,10 @@ const TableComponent: React.FC<TableProps> = ({
                 className="tableheader"
                 key={col}
               >
-                {col}
+                <div>
+                  {col}
+                  {showArrow(col)}
+                </div>
               </th>
             );
           })}
@@ -116,12 +147,12 @@ const TableComponent: React.FC<TableProps> = ({
                 <td className="agecolumn">{person.age}</td>
                 <td className="modifycolumn">
                   <button onClick={() => startEdit(person)}>
-                    <EditIcon />
+                    <EditIcon style={{ width: "20px" }} />
                   </button>
                 </td>
                 <td className="deletecolumn">
                   <button onClick={() => handleDelete(person)}>
-                    <DeleteForeverIcon />
+                    <DeleteForeverIcon style={{ width: "20px" }} />
                   </button>
                 </td>
               </tr>
@@ -155,12 +186,12 @@ const TableComponent: React.FC<TableProps> = ({
                 </td>
                 <td className="modifycolumn">
                   <button onClick={() => modifyPerson()}>
-                    <SaveIcon />
+                    <SaveIcon style={{ width: "20px" }} />
                   </button>
                 </td>
                 <td className="deletecolumn">
                   <button onClick={() => handleDelete(person)}>
-                    <DeleteForeverIcon />
+                    <DeleteForeverIcon style={{ width: "20px" }} />
                   </button>
                 </td>
               </tr>

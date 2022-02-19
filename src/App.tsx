@@ -40,7 +40,6 @@ const App: React.FC = () => {
 
   const handleSorting = (sortField: string, order: string) => {
     if (sortBy !== sortField || sortOrder !== order) {
-      console.log(`${sortField} ${order}`);
       setData(sortArray(data, sortField, order));
       setSortBy(sortField);
       setSortOrder(order);
@@ -50,7 +49,6 @@ const App: React.FC = () => {
   const getData = async () => {
     const d = await database.getAll();
     sortArray(d, sortBy, sortOrder);
-    console.log(d);
     setData(d);
   };
 

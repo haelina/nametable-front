@@ -2,14 +2,17 @@
   background-color: rgb(243, 239, 252);
   max-width: 99vw;
   margin-top: 10px;
-  padding: 10px;
+  padding: 5px;
+  width: 100vw;
   border: 2px solid gray;
 }
 
 .tableheader {
   text-align: left;
-  padding: 10px;
+  padding-left: 5px;
   color: white;
+  height: 50px;
+  font-size: small;
   background-color: rgb(51, 51, 51);
   border-radius: 10px 10px 0px 0px;
 }
@@ -23,7 +26,7 @@ tbody td {
 .lastcolumn,
 .firstcolumn_mod,
 .lastcolumn_mod {
-  width: 30vw;
+  width: 25%;
 }
 
 .firstcolumn_mod,
@@ -34,7 +37,7 @@ tbody td {
 
 .agecolumn,
 .agecolumn_mod {
-  width: 15vw;
+  width: 15%;
 }
 
 tbody input {
@@ -45,6 +48,7 @@ tbody input {
 .deletecolumn,
 .modifycolumn {
   padding: 5px;
+  width: 10%;
   text-align: center;
 }
 
@@ -52,5 +56,10 @@ tbody input {
   .nametable {
     width: 50vw;
     margin: 10px;
+  }
+
+  .tableheader {
+    font-size: medium;
+    padding-left: 10px;
   }
 }
