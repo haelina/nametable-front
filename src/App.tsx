@@ -13,6 +13,8 @@ const App: React.FC = () => {
     { id: 3, firstName: "Neea", lastName: "Lattu", age: 27 },
   ];*/
   const [data, setData] = useState<Person[]>([]);
+  const [sortBy, setSortBy] = useState<string>("firstName");
+  const [sortOrder, setSortOrder] = useState<string>("asc");
 
   const handleAdd = async (e: React.FormEvent, person: Person) => {
     e.preventDefault();
@@ -36,9 +38,18 @@ const App: React.FC = () => {
     }
   };
 
+  const handleSorting = (sortField: string, order: string) => {
+    if (sortBy !== sortField || sortOrder !== order) {
+      console.log(`${sortField} ${order}`);
+      setData(sortArray(data, sortField, order));
+      setSortBy(sortField);
+      setSortOrder(order);
+    }
+  };
+
   const getData = async () => {
     const d = await database.getAll();
-    sortArray(d, "age", "desc");
+    sortArray(d, sortBy, sortOrder);
     console.log(d);
     setData(d);
   };
@@ -53,8 +64,11 @@ const App: React.FC = () => {
       <AddPersonForm handleAdd={handleAdd} />
       <TableComponent
         data={data}
+        sortBy={sortBy}
+        sortOrder={sortOrder}
         handleEdit={handleEdit}
         handleDelete={handleDelete}
+        handleSorting={handleSorting}
       />
     </div>
   );

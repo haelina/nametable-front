@@ -7,21 +7,26 @@ import "./TableComponent.css";
 
 interface TableProps {
   data: Person[];
+  sortBy: string;
+  sortOrder: string;
   handleEdit: (p: Person) => void;
   handleDelete: (p: Person) => void;
+  handleSorting: (sortField: string, order: string) => void;
 }
 
 const TableComponent: React.FC<TableProps> = ({
   data,
+  sortBy,
+  sortOrder,
   handleEdit,
   handleDelete,
+  handleSorting,
 }) => {
-  const columnNames: string[] = ["First name", "Last name", "Age"];
+  const columnNames: string[] = ["First Name", "Last Name", "Age"];
   const [editingPerson, setEditingPerson] = useState<Person | null>(null);
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [age, setAge] = useState(0);
-  //const [sortColumn, setSortColumn] = useState("firstName");
 
   const modifyPerson = () => {
     if (editingPerson) {
@@ -45,6 +50,45 @@ const TableComponent: React.FC<TableProps> = ({
     setAge(p.age);
   };
 
+  const changeOrder = (column: string) => {
+    switch (column) {
+      case "First Name": {
+        if (sortBy === "firstName") {
+          sortOrder === "asc"
+            ? handleSorting("firstName", "desc")
+            : handleSorting("firstName", "asc");
+        } else {
+          handleSorting("firstName", "asc");
+        }
+        break;
+      }
+      case "Last Name": {
+        if (sortBy === "lastName") {
+          sortOrder === "asc"
+            ? handleSorting("lastName", "desc")
+            : handleSorting("lastName", "asc");
+        } else {
+          handleSorting("lastName", "asc");
+        }
+        break;
+      }
+      case "Age": {
+        if (sortBy === "age") {
+          sortOrder === "asc"
+            ? handleSorting("age", "desc")
+            : handleSorting("age", "asc");
+        } else {
+          handleSorting("age", "asc");
+        }
+        break;
+      }
+      default: {
+        handleSorting("firstName", "asc");
+        break;
+      }
+    }
+  };
+
   return (
     <table className="nametable">
       <thead>
@@ -52,7 +96,7 @@ const TableComponent: React.FC<TableProps> = ({
           {columnNames.map((col) => {
             return (
               <th
-                onClick={() => console.log(`Sorting by ${col}`)}
+                onClick={() => changeOrder(col)}
                 className="tableheader"
                 key={col}
               >
