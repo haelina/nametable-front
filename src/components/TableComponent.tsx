@@ -145,15 +145,19 @@ const TableComponent: React.FC<TableProps> = ({
                 <td className="firstcolumn">{person.firstName}</td>
                 <td className="lastcolumn">{person.lastName}</td>
                 <td className="agecolumn">{person.age}</td>
-                <td className="modifycolumn">
-                  <button onClick={() => startEdit(person)}>
-                    <EditIcon style={{ width: "20px" }} />
-                  </button>
+                <td
+                  className="modifycolumn buttonBg"
+                  onClick={() => startEdit(person)}
+                >
+                  <EditIcon style={{ width: "25px", color: "white" }} />
                 </td>
-                <td className="deletecolumn">
-                  <button onClick={() => handleDelete(person)}>
-                    <DeleteForeverIcon style={{ width: "20px" }} />
-                  </button>
+                <td
+                  className="deletecolumn buttonBg"
+                  onClick={() => handleDelete(person)}
+                >
+                  <DeleteForeverIcon
+                    style={{ width: "25px", color: "white" }}
+                  />
                 </td>
               </tr>
             );
@@ -184,15 +188,19 @@ const TableComponent: React.FC<TableProps> = ({
                     onChange={(e) => setAge(Number(e.target.value))}
                   ></input>
                 </td>
-                <td className="modifycolumn">
-                  <button onClick={() => modifyPerson()}>
-                    <SaveIcon style={{ width: "20px" }} />
-                  </button>
+                <td
+                  className="modifycolumn buttonBg"
+                  onClick={() => modifyPerson()}
+                >
+                  <SaveIcon style={{ width: "25px", color: "white" }} />
                 </td>
-                <td className="deletecolumn">
-                  <button onClick={() => handleDelete(person)}>
-                    <DeleteForeverIcon style={{ width: "20px" }} />
-                  </button>
+                <td
+                  className="deletecolumn buttonBg"
+                  onClick={() => handleDelete(person)}
+                >
+                  <DeleteForeverIcon
+                    style={{ width: "25px", color: "white" }}
+                  />
                 </td>
               </tr>
             );

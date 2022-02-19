@@ -59,7 +59,7 @@ const App: React.FC = () => {
   return (
     <div className="App">
       <div className="header">
-        <h1>Names</h1>
+        <h1>Persons</h1>
       </div>
 
       <AddPersonForm handleAdd={handleAdd} />

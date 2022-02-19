@@ -11,7 +11,7 @@
 .inputs > * {
   padding: 10px;
   border-radius: 5px;
-  box-shadow: 2px 4px 5px 2px rgb(141, 141, 141);
+  box-shadow: 2px 1px 10px 3px #596061;
   margin-bottom: 5px;
 }
 
@@ -28,21 +28,23 @@
 }
 
 .submit_disabled {
-  color: rgb(177, 177, 177);
+  color: rgb(243, 243, 243);
   background-color: gainsboro;
-  box-shadow: 2px 4px 5px 2px rgb(141, 141, 141);
+  box-shadow: none;
 }
 
 .submit_new {
-  color: antiquewhite;
-  background-color: rgb(255, 80, 10);
+  color: #573625;
+  background-color: #29d2f0;
+  font-weight: bold;
   padding: 2px 15px;
   border-radius: 5px;
-  box-shadow: 2px 4px 5px 2px rgb(141, 141, 141);
+  box-shadow: 2px 1px 10px 3px #596061;
 }
 
 .submit_new:hover {
-  background-color: rgb(255, 118, 27);
+  background-color: #6ae9ff;
+  transform: scale(1.05);
 }
 
 .submit_new:active {
@@ -56,11 +58,11 @@
   }
 
   .firstname {
-    width: 30%;
+    width: 35%;
   }
 
   .lastname {
-    width: 30%;
+    width: 35%;
   }
 
   .age {
