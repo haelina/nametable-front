@@ -21,6 +21,7 @@ const TableComponent: React.FC<TableProps> = ({
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [age, setAge] = useState(0);
+  //const [sortColumn, setSortColumn] = useState("firstName");
 
   const modifyPerson = () => {
     if (editingPerson) {
@@ -50,7 +51,11 @@ const TableComponent: React.FC<TableProps> = ({
         <tr>
           {columnNames.map((col) => {
             return (
-              <th className="tableheader" key={col}>
+              <th
+                onClick={() => console.log(`Sorting by ${col}`)}
+                className="tableheader"
+                key={col}
+              >
                 {col}
               </th>
             );
